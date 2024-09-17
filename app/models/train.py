@@ -3,7 +3,6 @@ import tensorflow as tf
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout
-from sklearn.model_selection import train_test_split
 
 def train_model(data_dir, model_path):
     datagen = ImageDataGenerator(
@@ -50,12 +49,22 @@ def train_model(data_dir, model_path):
     model.fit(
         train_data,
         validation_data=val_data,
-        epochs=10,
+        epochs=1,
         steps_per_epoch=train_data.samples // train_data.batch_size,
         validation_steps=val_data.samples // val_data.batch_size
     )
 
+    # Modeli kaydetme
     model.save(model_path)
-    print(f"Model {model_path} konumuna kaydedildi.")
 
-train_model("data/raw", "models/food_classification_model.h5")
+    # Sınıf isimlerini kaydetme
+    classes = list(train_data.class_indices.keys())
+    with open('models/classes.txt', 'w') as f:
+        for cls in classes:
+            f.write(f"{cls}\n")
+
+    print(f"Model {model_path} konumuna kaydedildi.")
+    print("Sınıf isimleri kaydedildi:", classes)
+
+# Eğitim fonksiyonunu çağırma
+train_model("data/raw/food-101/images", "models/food_classification_model.h5")
