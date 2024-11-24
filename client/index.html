@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CookWiseAI - AI ve Görüntü Tanıma</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <h1>CookWiseAI</h1>
+                <p>Yapay Zeka ve Görüntü Tanıma ile Yemek Analizi</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><button class="tab-btn" data-tab="ocr">OCR</button></li>
+                    <li><button class="tab-btn" data-tab="food">Food Detection</button></li>
+                    <li><button class="tab-btn" data-tab="waste">Waste Tracking</button></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <!-- OCR Tab Content -->
+            <div id="ocr" class="tab-content">
+                <h2>OCR - Metin Tanıma</h2>
+                <div id="ocr-dropzone" class="file-drop">
+                    <p>Resminizi buraya sürükleyin veya tıklayın.</p>
+                    <input type="file" id="ocr-file" class="file-input" accept="image/*">
+                </div>
+                <div id="ocr-preview" class="image-preview hidden"></div>
+                <button id="ocr-submit" class="submit-btn hidden">Gönder</button>
+                <div id="ocr-loading" class="loading hidden">Yükleniyor...</div>
+                <div id="ocr-results" class="results hidden"></div>
+            </div>
+
+            <!-- Food Detection Tab Content -->
+            <div id="food" class="tab-content hidden">
+                <h2>Food Detection - Yemek Tanıma</h2>
+                <div id="food-dropzone" class="file-drop">
+                    <p>Resminizi buraya sürükleyin veya tıklayın.</p>
+                    <input type="file" id="food-file" class="file-input" accept="image/*">
+                </div>
+                <div id="food-preview" class="image-preview hidden"></div>
+                <button id="food-submit" class="submit-btn hidden">Gönder</button>
+                <div id="food-loading" class="loading hidden">Yükleniyor...</div>
+                <div id="food-results" class="results hidden"></div>
+            </div>
+
+            <!-- Waste Tracking Tab Content -->
+            <div id="waste" class="tab-content hidden">
+                <h2>Waste Tracking - Atık İzleme</h2>
+                <div id="waste-dropzone-before" class="file-drop">
+                    <p>Yemek öncesi resmini buraya sürükleyin veya tıklayın.</p>
+                    <input type="file" id="waste-file-before" class="file-input" accept="image/*">
+                </div>
+                <div id="waste-preview-before" class="image-preview hidden"></div>
+
+                <div id="waste-dropzone-after" class="file-drop">
+                    <p>Yemek sonrası resmini buraya sürükleyin veya tıklayın.</p>
+                    <input type="file" id="waste-file-after" class="file-input" accept="image/*">
+                </div>
+                <div id="waste-preview-after" class="image-preview hidden"></div>
+
+                <button id="waste-submit" class="submit-btn hidden">Gönder</button>
+                <div id="waste-loading" class="loading hidden">Yükleniyor...</div>
+                <div id="waste-results" class="results hidden">
+                    <div class="progress-container">
+                        <div class="progress"></div>
+                    </div>
+                    <p>Atık tahmini ve CO2 emisyonu burada gösterilecek.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
