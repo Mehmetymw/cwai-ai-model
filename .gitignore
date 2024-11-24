@@ -1,0 +1,3 @@
+# Öncelikle her şeyi hariç tut
+data/*
+model/weights/*.h5
